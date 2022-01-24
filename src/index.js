@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
+import { PrismicProvider } from '@prismicio/react';
+import { client } from './prismic'
 import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PrismicProvider>
+      <App />
+    </PrismicProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
