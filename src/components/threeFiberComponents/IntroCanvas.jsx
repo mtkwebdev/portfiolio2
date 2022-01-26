@@ -10,13 +10,13 @@ function IntroCanvas() {
   const CanvasContainer = styled.div`
     position: relative; 
     display: flex;
-    width: 50vw;
-    height: 80vh;
-    margin: 10vh auto;
-    ${'' /* margin: auto auto; */}
+    width: 100vw;
+    height: 100vh;
+    ${'' /* margin: 10vh auto; */}
+    margin: auto auto;
     border: 1px solid black;
-    border-radius: 20px;
-    ${'' /* background: black; */}
+    ${'' /* border-radius: 20px; */}
+    background: black;
   `
 
   const ColorMaterial = shaderMaterial(
