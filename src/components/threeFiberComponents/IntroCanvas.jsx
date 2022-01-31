@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom'
 import React, { Suspense, useRef, useState } from 'react'
 import * as THREE from 'three'
-import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { OrbitControls, shaderMaterial, Torus} from '@react-three/drei'
+import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
+import { OrbitControls, shaderMaterial, TorusKnot} from '@react-three/drei'
 import styled from 'styled-components'
 // import glsl from 'babel-plugin-glsl/macro'
 
@@ -42,12 +42,17 @@ function IntroCanvas() {
   const TubeGeo = ()=>{
     const [curve] = useState(() => {
       // Create an empty array to stores the points
-      let points = []
-      // Define points along Z axis
-      for (let i = 0; i < 10; i += 1)
-      points.push(new THREE.Vector3(Math.random(), Math.random(), (i / 0.05)))
-      return new THREE.CatmullRomCurve3(points)
+      // let points = []
+      // // // Define points along Z axis
+      // for (let i = 0; i < 10; i += 1)
+      // points.push(new THREE.Vector3(Math.random(), Math.random(), (i / 0.05)))
+
+      // // const points = new THREE.TorusKnotGeometry(10, 3, 100, 16 )
+      // return new THREE.CatmullRomCurve3(points, true )
+
     })
+
+    
     
     const texture = useLoader(THREE.TextureLoader, image);
 
@@ -56,7 +61,7 @@ function IntroCanvas() {
     return (
       <mesh>
         <tubeGeometry  position={[0,0,0]} attach="geometry" args={[curve, 2, 3, 20, false]} />
-        <meshStandardMaterial attach="material"  side={THREE.BackSide}
+        <meshStandardMaterial attach="material"  side={THREE.DoubleSide}
          map={texture} 
         //  wireframe={true} 
         //  metalness={0.4}
@@ -66,26 +71,60 @@ function IntroCanvas() {
     )
   }
 
+  
+  // extend(THREE.Mesh)
   const  Dolly = () => {
-    // This one makes the camera move in and out
-    useFrame(({ clock, camera }) => {
-      camera.position.z -= 0.01
+    const geometry = new THREE.TorusKnotBufferGeometry( 10, 3, 100, 16 )
+    const tube = new THREE.Mesh(geometry);
+    
+    const loop = useFrame(({ clock, camera }) => {
+      const t = Math.floor(clock.getElapsedTime()*30)
+      // const looptime = 10
+      // const t = Math.floor((time / looptime) *100);
+      // const t = 1
+      const arr = tube.geometry.attributes.position.array
+        // for (let i = 0; i < arr.length; i +=1 ){
+          const  pos1 = tube.position.x 
+          const  pos2 = tube.position.y
+          const  pos3 = tube.position.z
+          camera.position.x += tube.position.x 
+          camera.position.x += tube.position.x 
+          camera.position.x += tube.position.x 
+          // const  pos1 = tube.geometry.attributes.position.array[t*3]
+          // const  pos2 = tube.geometry.attributes.position.array[(t*3)+1]
+          // const  pos3 = tube.geometry.attributes.position.array[(t*3)+2]
+          // console.log(pos1)
+          //  camera.position.set(pos1, pos3, pos2);
+          //  camera.position.set(pos1, pos2, pos3);
+           camera.updateProjectionMatrix()
+        // }
     })
-    return null
+    return loop
   }
 
+  const CameraPath = ()=>{
+    const geometry = new THREE.TorusKnotBufferGeometry( 10, 3, 100, 16 )
+    const tube = new THREE.Mesh(geometry);
+     console.log(tube)
+  }
+  CameraPath()
+
   return (
-    <CanvasContainer id='CanvasContainer'>
-    <Suspense fallback={null}>
-    <Canvas camera={{ fov: 75, position: [0, 0, 185] }} >
-    <ambientLight intensity={2}/> 
-    <pointLight position={[0,0,0]} intensity={2}/>
-      <TubeGeo/>
-    <OrbitControls enablePan={false} enableZoom={true} enableRotate={false}/>
-      <Dolly/>
-    </Canvas>
-    </Suspense>
-  </CanvasContainer>
+    <CanvasContainer  id='CanvasContainer'>
+      <Suspense fallback={null}>
+        <Canvas camera={{fov: 60}}>
+          <ambientLight intensity={2}/> 
+          <pointLight position={[0,0,0]} intensity={2}/>
+            {/* <TubeGeo/> */}
+            <TorusKnot position={[0,0,0]} args={[10, 4, 50, 16 ]}>
+              <meshPhongMaterial attach="material" wireframe={true} color="green" />
+            </TorusKnot> 
+            <Dolly/>
+            {/* {console.log()} */}
+          {/* <OrbitControls enablePan={true} enableZoom={true} enableRotate={true}/> */}
+        </Canvas>
+      </Suspense>
+    </CanvasContainer>
   )
 }
 
