@@ -77,26 +77,26 @@ function IntroCanvas() {
     const geometry = new THREE.TorusKnotBufferGeometry( 10, 3, 100, 16 )
     const tube = new THREE.Mesh(geometry);
     
+    const arr = tube.geometry.attributes.position.array
     const loop = useFrame(({ clock, camera }) => {
       const t = Math.floor(clock.getElapsedTime()*30)
       // const looptime = 10
       // const t = Math.floor((time / looptime) *100);
       // const t = 1
-      const arr = tube.geometry.attributes.position.array
         // for (let i = 0; i < arr.length; i +=1 ){
-          const  pos1 = tube.position.x 
-          const  pos2 = tube.position.y
-          const  pos3 = tube.position.z
-          camera.position.x += tube.position.x 
-          camera.position.x += tube.position.x 
-          camera.position.x += tube.position.x 
-          // const  pos1 = tube.geometry.attributes.position.array[t*3]
+          // const  pos1 = tube.position.x 
+          // const  pos2 = tube.position.y
+          // const  pos3 = tube.position.z
+          // camera.position.x += tube.position.x 
+          // camera.position.x += tube.position.x 
+          // camera.position.x += tube.position.x 
+          // const  pos1 = tube.geometry.attributes.position.array[(t*3)]
           // const  pos2 = tube.geometry.attributes.position.array[(t*3)+1]
           // const  pos3 = tube.geometry.attributes.position.array[(t*3)+2]
           // console.log(pos1)
-          //  camera.position.set(pos1, pos3, pos2);
+          //  camera.position.set(pos1/-1, pos1/-1, pos2/-1);
           //  camera.position.set(pos1, pos2, pos3);
-           camera.updateProjectionMatrix()
+          //  camera.updateProjectionMatrix()
         // }
     })
     return loop
@@ -121,7 +121,7 @@ function IntroCanvas() {
             </TorusKnot> 
             <Dolly/>
             {/* {console.log()} */}
-          {/* <OrbitControls enablePan={true} enableZoom={true} enableRotate={true}/> */}
+          <OrbitControls enablePan={true} enableZoom={true} enableRotate={true}/>
         </Canvas>
       </Suspense>
     </CanvasContainer>
