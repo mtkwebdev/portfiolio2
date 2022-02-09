@@ -14,3 +14,11 @@ export const client = prismic.createClient(endpoint, {
         }
     ]
 })
+
+
+// import {PrismicRichText, useFirstPrismicDocument, usePrismicDocumentByUID} from '@prismicio/react'
+
+// const  [projectsSection] = usePrismicDocumentByUID('projects','projects')
+//     {console.log(
+//       projectsSection  
+//     )}
