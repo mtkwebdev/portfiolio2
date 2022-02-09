@@ -1,15 +1,13 @@
-import React from "react";
 
-import IntroCanvas from './components/threeFiberComponents/IntroCanvas'
+import MainPage from "./pages/MainPage";
 
 function App() {
 
-  
   return (
-    <div className="App">
-      <IntroCanvas/>
-    </div>
-  );
+    <>
+    <MainPage/>
+    </>
+  )
 }
 
 export default App;
