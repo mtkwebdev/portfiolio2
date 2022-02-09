@@ -1,3 +1,4 @@
+
 import MainPage from "./pages/MainPage";
 
 function App() {
@@ -7,7 +8,6 @@ function App() {
     <MainPage/>
     </>
   )
-
 }
 
 export default App;
