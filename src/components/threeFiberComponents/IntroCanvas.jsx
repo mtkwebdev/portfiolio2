@@ -1,6 +1,6 @@
 import React, { Suspense, useRef } from 'react'
 import * as THREE from 'three'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Torus} from '@react-three/drei'
 import styled from 'styled-components'
 
@@ -17,16 +17,24 @@ function IntroCanvas({width,height}) {
     background: black;
   `
 
-  const Rafter = (props) => {
+  const AnimatedTorus = () => {
+    const torusSpin = useRef();
+    useFrame(({clock})=>{
+      // torusSpin.current.rotation.x=  (Math.PI*4) +  clock.getElapsedTime()
+      // torusSpin.current.rotation.y = 0
+      torusSpin.current.position.x = -9
+      torusSpin.current.position.y = -1
+      torusSpin.current.position.z = -3
 
-    const ref = useRef(group => {
-      group.rotateOnAxis(props.axis,props.angle)
-    }, [])
-  
+      torusSpin.current.rotation.x = 1.5
+      torusSpin.current.rotation.y = 0
+      torusSpin.current.rotation.z = clock.getElapsedTime() * 0.2
+    })
+
     return (
-      <group ref={ref}>
-        <Torus position={[1,-10,0]} args={[10, 4, 50, 16 ]}>
-              <meshPhongMaterial attach="material" wireframe={true} color="green"/>
+      <group ref={torusSpin}>
+        <Torus  args={[10, 3, 20, 30 ]}>
+              <meshPhongMaterial attach="material" wireframe={true} color="green" side={THREE.BackSide}/>
             </Torus> 
       </group>
     )
@@ -39,12 +47,8 @@ function IntroCanvas({width,height}) {
         <Canvas camera={{fov: 60}}>
           <ambientLight intensity={2}/> 
           <pointLight position={[0,0,0]} intensity={2}/>
-            {/* <TubeGeo/> */}
-            <Rafter axis={new THREE.Vector3(1, 0, 0)} angle={Math.PI/2} />
-        
-            {/* <Dolly/> */}
-            {/* {console.log()} */}
-          <OrbitControls enablePan={true} enableZoom={true} enableRotate={true}/>
+            <AnimatedTorus/>
+          <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}/>
         </Canvas>
       </Suspense>
     </CanvasContainer>
