@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MeshGradient from '../components/PageComponents/MainPage/MeshGradient';
 import meshImage from '../static/img/mintyMesh2.png'
-import IntroCanvas from '../components/threeFiberComponents/IntroCanvas';
+import ProjectsCanvas from '../components/threeFiberComponents/ProjectsCanvas';
 
 const HeaderTitle = styled.h1`
 posiiton: relative;
@@ -88,7 +88,7 @@ I have been involved with Front End Development since 2019; using HTML, CSS (SCS
 
 I am always ready to take on challenges and like to stay busy in my spare time through learning and proactive hobbies, including Web development, trading Crypto-Currency / Stocks and Shares, making music, cooking, and playing online collaborative team games. I also cycle to keep fit, and I am a keen swimmer.</p>
             </Introduction>
-            <IntroCanvas width={'100%'} height={'80vh'}/>
+            <ProjectsCanvas width={'100%'} height={'80vh'}/>
         </MainContent>
     </>
   )
