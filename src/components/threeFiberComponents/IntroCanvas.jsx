@@ -10,7 +10,7 @@ function IntroCanvas({width,height}) {
     position: relative; 
     display: flex;
     width: ${width||"100vw"};
-    height: ${height||"100vw"};
+    height: ${height||"100vh"};
     margin: 5vh auto;
     border: 1px solid black;
     border-radius: 20px;
