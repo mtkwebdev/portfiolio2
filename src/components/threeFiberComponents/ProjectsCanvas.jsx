@@ -5,16 +5,17 @@ import { OrbitControls, Torus} from '@react-three/drei'
 import styled from 'styled-components'
 
 
-function IntroCanvas({width,height}) {
+function ProjectsCanvas({width,height,margin}) {
   const CanvasContainer = styled.div`
     position: relative; 
     display: flex;
     width: ${width||"100vw"};
     height: ${height||"100vh"};
-    margin: 5vh auto;
-    border: 1px solid black;
-    border-radius: 20px;
+    margin: ${margin || "auto auto"};
+    ${'' /* border: 1px solid black;
+    border-radius: 20px; */}
     background: black;
+    z-index:-2;
   `
 
   const AnimatedTorus = () => {
@@ -55,4 +56,4 @@ function IntroCanvas({width,height}) {
   )
 }
 
-export default IntroCanvas;
+export default ProjectsCanvas;
