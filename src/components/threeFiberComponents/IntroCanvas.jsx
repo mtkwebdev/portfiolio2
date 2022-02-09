@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom'
 import React, { Suspense, useRef, useState } from 'react'
 import * as THREE from 'three'
-import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
-import { OrbitControls, shaderMaterial, TorusKnot} from '@react-three/drei'
+import { Canvas, useLoader, useFrame, extend, useThree, } from '@react-three/fiber'
+import { OrbitControls, shaderMaterial, Torus} from '@react-three/drei'
 import styled from 'styled-components'
 // import glsl from 'babel-plugin-glsl/macro'
 
@@ -10,12 +10,12 @@ import styled from 'styled-components'
 import image from '../../static/img/matrix-code-still.jpeg'
 
 
-function IntroCanvas() {
+function IntroCanvas({width,height}) {
   const CanvasContainer = styled.div`
     position: relative; 
     display: flex;
-    width: 100vw;
-    height: 90vh;
+    width: ${width||"100vw"};
+    height: ${height||"100vw"};
     margin: 5vh auto;
     border: 1px solid black;
     border-radius: 20px;
@@ -109,6 +109,22 @@ function IntroCanvas() {
   }
   CameraPath()
 
+  const Rafter = (props) => {
+
+    const ref = useRef(group => {
+      group.rotateOnAxis(props.axis,props.angle)
+    }, [])
+  
+    return (
+      <group ref={ref}>
+        <Torus position={[1,-10,0]} args={[10, 4, 50, 16 ]}>
+              <meshPhongMaterial attach="material" wireframe={true} color="green"/>
+            </Torus> 
+      </group>
+    )
+  
+  }
+
   return (
     <CanvasContainer  id='CanvasContainer'>
       <Suspense fallback={null}>
@@ -116,10 +132,9 @@ function IntroCanvas() {
           <ambientLight intensity={2}/> 
           <pointLight position={[0,0,0]} intensity={2}/>
             {/* <TubeGeo/> */}
-            <TorusKnot position={[0,0,0]} args={[10, 4, 50, 16 ]}>
-              <meshPhongMaterial attach="material" wireframe={true} color="green" />
-            </TorusKnot> 
-            <Dolly/>
+            <Rafter axis={new THREE.Vector3(1, 0, 0)} angle={Math.PI/2} />
+        
+            {/* <Dolly/> */}
             {/* {console.log()} */}
           <OrbitControls enablePan={true} enableZoom={true} enableRotate={true}/>
         </Canvas>
