@@ -1,11 +1,14 @@
 
-import MainPage from "./pages/MainPage";
+// import MainPage from "./pages/MainPage";
+import HomePage from "./pages/HomePage";
+import ResultsPage from "./pages/ResultsPage"; 
 
 function App() {
 
   return (
     <>
-    <MainPage/>
+    <HomePage/>
+    <ResultsPage/>
     </>
   )
 }

@@ -7,73 +7,15 @@ import googleUserIcon from '../static/img/googleUserIcon.png'
 import gridIcon from '../static/img/gridIcon.png'
 import {usePrismicDocumentByUID} from '@prismicio/react'
 
-const IntroSection = styled.div`
+const ResultsSection = styled.div`
     height:100vh;
-    h2{
-        position:absolute;
-        bottom: 1rem;
-        left: 42.5vw;
-        right: 42.5vw;
-        font-weight:200;
-        animation: bounce 2s infinite;
-        text-align:center;
-    }
-    @keyframes bounce{
-        50%{transform: translateY(20px)}
-    }
 `
 
-const TopBar = styled.header`
-        font-size:0.9rem;
-        display: flex;
-        flex-direction: row;
-        width:100%;
 
-    .headerTexts{
-        display: flex;
-        flex-direction: row;
-        justify-content:space-between;
-        width: 95%;
-
-            span {
-                display: flex;
-                flex-direction: row;
-                margin-top: 10px;
-                margin-left: 10px;
-                    p{
-                        cursor:pointer;
-                        margin: auto 10px
-                        }
-                }
-
-            span:nth-child(2){
-                ${'' /* margin-right: 100px */}
-                }
-
-        }
-
-        .headerIcons{
-            display:flex;
-            flex-direction:row;
-            justify-self: end;
-            width:8em;
-            margin: 10px auto auto auto;
-                .icons{
-                    width:50px;
-                    height:auto;
-                    object-fit:contain;
-                    border-radius:100%;
-                    cursor:pointer;
-                }
-                .icons:nth-child(2) &:hover{
-                    ${'' /* filter: invert(48%); */}
-                    background-color:grey;
-                }
-        }
-`
 
 const Skills = styled.div`
         position:absolute;
+        top: 100vh;
         z-index:5;
         display:grid;
         grid-template-columns: repeat(3,1fr);
@@ -110,33 +52,35 @@ const Skills = styled.div`
 
 `
 
-const MidSection = styled.div`
+const TopSection = styled.div`
         position:relative;
         display:flex;
-        flex-direction:column;
-        margin:auto;
+        flex-direction:row;
+        margin:0px;
         padding:0px;
-        width: 80vw;
+        width: fit-content;
+        height: fit-content;
 `
 
 const Logo = styled.img`
         position:relative;
         display:flex;
         flex-direction:column;
-        margin: 25vh auto 0px auto;
-        width:400px;
-        height: auto;
+        ${'' /* margin: 25vh auto 0px auto; */}
+        margin: 20px 20px;
+        width:120px;
+        height: 50px;
         object-fit:contain;
 `
 
 const SearchBar = styled.div`
         display:flex;
-        margin: 10px auto;
+        margin: 25px 15px;
         width: 40rem;
         height: 2.5rem;
         border-radius: 2em;
-        border: 1px solid rgba(0,0,0,0.2);
-        background:none;
+        border: none;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     span{
         z-index:1;
@@ -146,7 +90,6 @@ const SearchBar = styled.div`
         margin:6px 20px 10px 25px;
         width:90%;
         height: 1.8rem;
-        text-align: center;
         font-size:1.2rem;
         border:none;
         outline: none;
@@ -165,48 +108,86 @@ const SearchBar = styled.div`
         color: rgba(0,0,0,0.2)
     }
 `
+const BottomBar = styled.header`
+        font-size:0.9rem;
+        display: flex;
+        flex-direction: row;
+        width:100%;
 
-const Buttons= styled.div`
-        display:flex;
-        flex-direction:row;
-        margin: 20px auto;
-        width:fit-content;
-        justify-items:center;
-    button{
-        margin: 0px 10px;
-        padding: 13px;
-        width: 150px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        background: rgba(0,0,0,0.05);
-        border: 1px solid rgba(0,0,0,0);
-    }
-    button:hover{
-        border: 1px solid lightgrey;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
-    }
+    .headerTexts{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        width: 100%;
+        height: 2.8rem;
+        border-bottom: 1px solid lightgrey;
+
+            span {
+                display: flex;
+                flex-direction: row;
+                margin: 0px 40px;
+                min-width: 400px;
+                height: 50px;
+                    p {
+                        width: fit-content;
+                        padding: 10px;
+                        cursor: pointer;
+                        margin: auto 10px;
+                        }
+                    p:hover{
+                        border-bottom: 3px solid rgba(0, 102, 212);
+                    }
+                    p:nth-child(1){
+                        border-bottom: 3px solid rgba(0, 102, 212);
+                    }
+                }
+        }
+
+        .headerIcons{
+            display:flex;
+            flex-direction:row;
+            justify-self: end;
+            width:8em;
+            margin: -5rem auto auto auto;
+                .icons{
+                    width:50px;
+                    height:auto;
+                    object-fit:contain;
+                    border-radius:100%;
+                    cursor:pointer;
+                }
+                .icons:nth-child(2) &:hover{
+                    ${'' /* filter: invert(48%); */}
+                    background-color:grey;
+                }
+        }
 `
 
-function HomePage() {
+function ResultsPage() {
     const [mySkills] = usePrismicDocumentByUID('skills', 'skills')
     const [showSkills, setShowSkills] = useState(false)
 
   return (
       <>
-        {/* <IntroSection onClick={()=> showSkills === !showSkills ? setShowSkills(showSkills): setShowSkills(!showSkills)}> */}
-        <IntroSection >
-            <TopBar>
+        {/* <ResultsSection onClick={()=> showSkills === !showSkills ? setShowSkills(showSkills): setShowSkills(!showSkills)}> */}
+        <ResultsSection >
+            <TopSection>
+                <Logo src={WebSearchLogo}/>
+                <SearchBar>
+                    <i className="searchIcon fa-solid fa-magnifying-glass"></i>
+                    <p>Welcome to Mohammad Kawadri's Portfolio Website </p>
+                </SearchBar>
+            </TopSection>
+            <BottomBar>
                 <div className='headerTexts'>
-                    <span><p>CV</p><p>Linkedin</p></span>
-                    <span><p>Email</p><p>GitHub</p></span>
+                    <span><p>All Results</p><p>CV</p><p>Linkedin</p><p>Email</p><p>GitHub</p></span>
                 </div>
                 <div className='headerIcons'>
                     <img className='icons' src={gridIcon} alt="" onClick={()=>setShowSkills(!showSkills)}  />
 
                     <img className='icons' src={googleUserIcon} alt="" />
                 </div>
-            </TopBar>
+            </BottomBar>
             {showSkills ? (
                 <Skills>
                     {/* <h1>My Skills</h1> */}
@@ -225,22 +206,10 @@ function HomePage() {
                     }
                 </Skills>
             ):(<div></div>)}
-            <MidSection>
-                <Logo src={WebSearchLogo}/>
-                <SearchBar>
-                    <i className="searchIcon fa-solid fa-magnifying-glass"></i>
-                    <p>Looking for a Junior / Mid - Level Front-End software developer? </p>
-                </SearchBar>
-                <Buttons>
-                    <button>Download My CV</button>
-                    <button>Contact Me!</button>
-                </Buttons>
-            </MidSection>
-            <h2>Scroll Down to see more!</h2>
-        </IntroSection>
+        </ResultsSection>
       </>
 
   )
 }
 
-export default HomePage
+export default ResultsPage
