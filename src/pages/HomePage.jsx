@@ -73,17 +73,26 @@ const TopBar = styled.header`
 `
 
 const Skills = styled.div`
+
+        h1{
+            text-align:center;
+            font-weight: 1rem;
+            height: 2rem;
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(7,120px);
+            grid-template-areas: "title title title" 
+            "...";
+        }
         position:absolute;
         z-index:5;
-        display:grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: repeat(10,120px);
-        grid-template-areas: "title title title" 
-        "...";
         overflow: scroll;
         top:5em;
         right:1em;
-        width: 300px;
+        width: 320px;
         height:26rem;
         border-radius: 0.5em;
         ${'' /* background:grey; */}
@@ -207,24 +216,27 @@ function HomePage() {
                     <img className='icons' src={googleUserIcon} alt="" />
                 </div>
             </TopBar>
-            {showSkills ? (
+                {showSkills ? (
                 <Skills>
-                    {/* <h1>My Skills</h1> */}
-                    {  
-                        mySkills && 
-                            mySkills.data.skills.map((data)=>{
-                                return (
-                                    <div  className='gridBox' >
-                                    {console.log(data.skillname[0].text)}
-                                    {console.log(data.skillimage.url)}
-                                        <img className="skillImages" key={"a" + data.skillname[0].text} src={data.skillimage.url} alt="" />
-                                        <p className="skillText" key={"b" + data.skillname[0].text}>{data.skillname[0].text}</p>
-                                    </div>
-                                )
-                            })
+                <h1 className='title'>My skills</h1>
+                <div className='grid'>
+                    {
+                    mySkills && 
+                        mySkills.data.skills.map((data)=>{
+                            return (
+                                <div  className='gridBox' >
+                                {console.log(data.skillname[0].text)}
+                                {console.log(data.skillimage.url)}
+                                    <img className="skillImages" key={"a" + data.skillname[0].text} src={data.skillimage.url} alt="" />
+                                    <p className="skillText" key={"b" + data.skillname[0].text}>{data.skillname[0].text}</p>
+                                </div>
+                            )
+                        })
                     }
+                </div>
+                
                 </Skills>
-            ):(<div></div>)}
+                    ):(<div></div>)}
             <MidSection>
                 <Logo src={WebSearchLogo}/>
                 <SearchBar>
