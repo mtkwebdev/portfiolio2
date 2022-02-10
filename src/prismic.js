@@ -7,12 +7,13 @@ export const endpoint = prismic.getEndpoint(mkportfolio)
 
 export const client = prismic.createClient(endpoint, {
     accessToken: connect,
-    routes: [
-        {
-            type: 'projects',
-            path: '/project1/:uid'
-        }
-    ]
+    // routes: [
+    //     {
+    //         type: 'page',
+    //         path: '/:uid'
+    //     }
+    // ]
+    routes: []
 })
 
 
