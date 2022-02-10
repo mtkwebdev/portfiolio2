@@ -5,6 +5,8 @@ import video from '../../../static/bannervideo.mp4'
 
 function TopSection() {
     const Container = styled.section`
+    position: absolute;
+    top:0;
     width: 100vw;
     height: auto;
 `
