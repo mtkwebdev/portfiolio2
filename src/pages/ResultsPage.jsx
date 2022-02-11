@@ -84,7 +84,7 @@ const BottomBar = styled.header`
             span {
                 display: flex;
                 flex-direction: row;
-                margin: 0px 4vw;
+                margin: 0px 9rem;
                 min-width: 400px;
                 height: 50px;
                     p {
@@ -126,7 +126,7 @@ function ResultsPage({children}) {
 
   return (
       <>
-        <ResultsSection >
+        <ResultsSection id='results'>
             <TopSection>
                 <Logo src={WebSearchLogo}/>
                 <SearchBar>

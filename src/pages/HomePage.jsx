@@ -158,7 +158,7 @@ function HomePage() {
 
   return (
       <>
-        <IntroSection >
+        <IntroSection id='home' >
             <TopBar>
                 <div className='headerTexts'>
                     <span><p>CV</p><p>Linkedin</p></span>
@@ -170,13 +170,13 @@ function HomePage() {
                 </div>
             </TopBar>
             <MidSection>
-                <Logo src={WebSearchLogo}/>
+                <a href="#home"><Logo src={WebSearchLogo}/></a>
                 <SearchBar>
                     <i className="searchIcon fa-solid fa-magnifying-glass"></i>
                     <p>Looking for a Junior / Mid - Level Front-End software developer? </p>
                 </SearchBar>
                 <Buttons>
-                    <button>Search</button>
+                    <a href="#results"><button>Search</button></a>
                     <button>Contact Me!</button>
                 </Buttons>
             </MidSection>
