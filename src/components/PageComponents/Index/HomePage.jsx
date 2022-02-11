@@ -1,12 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import WebSearchLogo from '../static/img/websearchLogo.png'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
-import googleUserIcon from '../static/img/googleUserIcon.png'
-import gridIcon from '../static/img/gridIcon.png'
-import {usePrismicDocumentByUID} from '@prismicio/react'
-import Skills from '../components/SharedComponents/GoogleParts/Skills';
+//
+import WebSearchLogo from '../../../static/img/websearchLogo.png'
+import googleUserIcon from '../../../static/img/googleUserIcon.png'
+import Skills from '../../SharedComponents/GoogleParts/Skills'
 
 const IntroSection = styled.div`
     height:100vh;
