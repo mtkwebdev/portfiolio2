@@ -5,6 +5,17 @@ import gridIcon from '../../../static/img/gridIcon.png'
 
 
 const Container = styled.div`
+        position:fixed;
+        z-index:5;
+        overflow: scroll;
+        top:5em;
+        right:1em;
+        width: 355px;
+        height:29rem;
+        border-radius: 0.5em;
+        ${'' /* background:grey; */}
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
         h1{
             text-align:center;
             font-weight: 1rem;
@@ -17,16 +28,6 @@ const Container = styled.div`
             grid-template-areas: "title title title" 
             "...";
         }
-        position:absolute;
-        z-index:5;
-        overflow: scroll;
-        top:5em;
-        right:1em;
-        width: 355px;
-        height:29rem;
-        border-radius: 0.5em;
-        ${'' /* background:grey; */}
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         .gridBox{
             display:flex;
             flex-direction:column;
@@ -65,9 +66,6 @@ function Skills() {
                         mySkills.data.skills.map((data)=>{
                             return (
                                 <div  className='gridBox' >
-                                {console.log(data)}
-                                {/* {console.log(data.skill_name[0].text)}
-                                {console.log(data.skill_image.url)} */}
                                     <img className="skillImages" key={"a" + data.skill_name[0].text} src={data.skill_image.url} alt="" />
                                     <p className="skillText" key={"b" + data.skill_name[0].text}>{data.skill_name[0].text}</p>
                                 </div>

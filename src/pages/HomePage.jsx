@@ -88,7 +88,8 @@ const Logo = styled.img`
         display:flex;
         flex-direction:column;
         margin: 25vh auto 0px auto;
-        width:400px;
+        width: 400px;
+        max-width:30vw;
         height: auto;
         object-fit:contain;
 `
@@ -96,7 +97,8 @@ const Logo = styled.img`
 const SearchBar = styled.div`
         display:flex;
         margin: 10px auto;
-        width: 40rem;
+        min-width:300px;
+        width: 40vw;
         height: 2.5rem;
         border-radius: 2em;
         border: 1px solid rgba(0,0,0,0.2);
