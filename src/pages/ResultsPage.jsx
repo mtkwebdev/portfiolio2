@@ -196,10 +196,10 @@ function ResultsPage() {
                             mySkills.data.skills.map((data)=>{
                                 return (
                                     <div  className='gridBox' >
-                                    {console.log(data.skillname[0].text)}
-                                    {console.log(data.skillimage.url)}
-                                        <img className="skillImages" key={"a" + data.skillname[0].text} src={data.skillimage.url} alt="" />
-                                        <p className="skillText" key={"b" + data.skillname[0].text}>{data.skillname[0].text}</p>
+                                    {console.log(data.skill_name[0].text)}
+                                    {console.log(data.skill_image.url)}
+                                        <img className="skillImages" key={"a" + data.skill_name[0].text} src={data.skill_image.url} alt="" />
+                                        <p className="skillText" key={"b" + data.skill_name[0].text}>{data.skill_name[0].text}</p>
                                     </div>
                                 )
                             })
