@@ -6,52 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import googleUserIcon from '../static/img/googleUserIcon.png'
 import gridIcon from '../static/img/gridIcon.png'
 import {usePrismicDocumentByUID} from '@prismicio/react'
+import Skills from '../components/SharedComponents/GoogleParts/Skills';
 
 const ResultsSection = styled.div`
     height:100vh;
 `
-
-
-
-const Skills = styled.div`
-        position:absolute;
-        top: 100vh;
-        z-index:5;
-        display:grid;
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: repeat(10,120px);
-        grid-template-areas: "title title title" 
-        "...";
-        overflow: scroll;
-        top:5em;
-        right:1em;
-        width: 300px;
-        height:26rem;
-        border-radius: 0.5em;
-        ${'' /* background:grey; */}
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        .gridBox{
-            display:flex;
-            flex-direction:column;
-            padding:5px;
-            margin:auto;
-            align-items: center;
-            .skillImages{
-                width: 50px;
-                height:50px;
-                object-fit:contain;
-                margin-bottom: -10px;
-            }
-            .skillText{
-                font-size: 0.8rem;
-                width: 50px;
-                align-self: start;
-                text-align:center;
-            }
-        }
-
-`
-
 const TopSection = styled.div`
         position:relative;
         display:flex;
@@ -61,7 +20,6 @@ const TopSection = styled.div`
         width: fit-content;
         height: fit-content;
 `
-
 const Logo = styled.img`
         position:relative;
         display:flex;
@@ -121,11 +79,12 @@ const BottomBar = styled.header`
         width: 100%;
         height: 2.8rem;
         border-bottom: 1px solid lightgrey;
+        margin: auto;
 
             span {
                 display: flex;
                 flex-direction: row;
-                margin: 0px 40px;
+                margin: 0px 9rem;
                 min-width: 400px;
                 height: 50px;
                     p {
@@ -163,14 +122,11 @@ const BottomBar = styled.header`
         }
 `
 
-function ResultsPage() {
-    const [mySkills] = usePrismicDocumentByUID('skills', 'skills')
-    const [showSkills, setShowSkills] = useState(false)
+function ResultsPage({children}) {
 
   return (
       <>
-        {/* <ResultsSection onClick={()=> showSkills === !showSkills ? setShowSkills(showSkills): setShowSkills(!showSkills)}> */}
-        <ResultsSection >
+        <ResultsSection id='results'>
             <TopSection>
                 <Logo src={WebSearchLogo}/>
                 <SearchBar>
@@ -183,29 +139,11 @@ function ResultsPage() {
                     <span><p>All Results</p><p>CV</p><p>Linkedin</p><p>Email</p><p>GitHub</p></span>
                 </div>
                 <div className='headerIcons'>
-                    <img className='icons' src={gridIcon} alt="" onClick={()=>setShowSkills(!showSkills)}  />
-
+                <Skills/>
                     <img className='icons' src={googleUserIcon} alt="" />
                 </div>
             </BottomBar>
-            {showSkills ? (
-                <Skills>
-                    {/* <h1>My Skills</h1> */}
-                    {  
-                        mySkills && 
-                            mySkills.data.skills.map((data)=>{
-                                return (
-                                    <div  className='gridBox' >
-                                    {console.log(data.skillname[0].text)}
-                                    {console.log(data.skillimage.url)}
-                                        <img className="skillImages" key={"a" + data.skillname[0].text} src={data.skillimage.url} alt="" />
-                                        <p className="skillText" key={"b" + data.skillname[0].text}>{data.skillname[0].text}</p>
-                                    </div>
-                                )
-                            })
-                    }
-                </Skills>
-            ):(<div></div>)}
+            {children}
         </ResultsSection>
       </>
 
