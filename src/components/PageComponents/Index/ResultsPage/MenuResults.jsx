@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {usePrismicDocumentByUID} from '@prismicio/react'
+import { Link } from 'react-router-dom'
 
 const Results = styled.div`
       margin: 20px auto;
@@ -41,9 +42,10 @@ function MenuResults() {
         MenuData.data.results_section.map((result)=>{
           return (
             <>
-            {console.log(result)}
               <Urls>{result.result_url[0].text}</Urls>
-              <Titles>{result.result_title[0].text}</Titles>
+              <Link to={result.router_url[0].text}>
+                <Titles>{result.result_title[0].text}</Titles>
+              </Link>
               <Descriptions>{result.result_description[0].text}</Descriptions>
             </>
           )

@@ -38,9 +38,13 @@ const TopBar = styled.header`
                 flex-direction: row;
                 margin-top: 10px;
                 margin-left: 10px;
-                    p{
+                    .text{
                         cursor:pointer;
                         margin: auto 10px
+                        }
+                    a{
+                        text-decoration:none;
+                        color:black;
                         }
                 }
 
@@ -120,6 +124,7 @@ const SearchBar = styled.div`
         border: none;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
+
     .searchIcon{
         width:20px;
         height: 20px;
@@ -158,8 +163,14 @@ function HomePage() {
         <IntroSection id='home' >
             <TopBar>
                 <div className='headerTexts'>
-                    <span><p>CV</p><p>Linkedin</p></span>
-                    <span><p>Email</p><p>GitHub</p></span>
+                    <span>
+                    <a className='text' target="_blank" rel="noreferrer" href='https://drive.google.com/file/d/1B0jvaayPjSdnyNQDVVqykM01n29X_24o/view?usp=sharing'>CV</a>
+                    <a className='text' target="_blank" rel="noreferrer" href='https://www.linkedin.com/in/mohammadkawadri/'>Linkedin</a>
+                    </span>
+                    <span>
+                    <a className='text' target="_blank" rel="noreferrer" href='href="mailto:kwaj93@gmail.com'>Email</a>
+                    <a className='text' target="_blank" rel="noreferrer" href='https://github.com/mtkwebdev'>GitHub</a>
+                    </span>
                 </div>
                 <div className='headerIcons'>
                     <Skills/>
