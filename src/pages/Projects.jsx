@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import ReactPlayer from 'react-player'
 import styled from 'styled-components'
 import blueWeb from '../static/videoDrafts/projects.mp4'
 
@@ -38,33 +37,24 @@ const Titles = styled.h1`
   cursor: default;
   z-index: 2;
 `
-const Subsection = styled.div`
-width:90%;
-height: fit-content;
-${'' /* margin: 0px 230px 0px 20px;
-  padding: 0px 20px 0px 20px; */}
-border-radius: 10px;
-font-size:2rem;
-font-weight: 200;
-color:black;
-background: none;
-cursor: default;
-border-radius: 20px;
-${'' /* backdrop-filter: blur(20px); */}
-`
+  const Subsection = styled.div`
+  width:90%;
+  height: fit-content;
+  ${'' /* margin: 0px 230px 0px 20px;
+    padding: 0px 20px 0px 20px; */}
+  border-radius: 10px;
+  font-size:2rem;
+  font-weight: 200;
+  color:black;
+  background: none;
+  cursor: default;
+  border-radius: 20px;
+  ${'' /* backdrop-filter: blur(20px); */}
+  `
 
 function Projects() {
-
-
   return (
     <Container>
-    
-        {/* <Titles>INTRODUCTION</Titles>
-        <Titles>THE WEB</Titles>  
-        <Titles>SKILLS</Titles>  
-        <Titles>CERTIFICATION</Titles>  
-        <Titles>EXPERIENCE</Titles>  
-        <Titles>JOURNEY</Titles>   */}
       <Sections id='one'>
         <Link id="home" to="/">HOME<i className="fa-regular fa-house-blank"></i></Link>
         <Titles>PROJECT- EJDFLWEFJO</Titles>
