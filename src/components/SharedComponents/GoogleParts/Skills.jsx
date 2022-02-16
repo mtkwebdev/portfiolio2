@@ -25,8 +25,6 @@ const Container = styled.div`
             display:grid;
             grid-template-columns: repeat(3,1fr);
             grid-template-rows: repeat(7,120px);
-            grid-template-areas: "title title title" 
-            "...";
         }
         .gridBox{
             display:flex;

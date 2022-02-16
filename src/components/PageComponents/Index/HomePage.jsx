@@ -160,7 +160,7 @@ function HomePage() {
 
   return (
       <>
-        <IntroSection id='home' >
+        <IntroSection id='home' className='mainBackground' >
             <TopBar>
                 <div className='headerTexts'>
                     <span>

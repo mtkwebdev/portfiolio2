@@ -1,5 +1,4 @@
-
-// import MainPage from "./pages/MainPage";
+import './index.scss'
 
 import Routes from "./router/Routes";
 function App() {

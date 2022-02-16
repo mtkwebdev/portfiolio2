@@ -127,7 +127,7 @@ function ResultsPage({children}) {
 
   return (
       <>
-        <ResultsSection id='results'>
+        <ResultsSection id='results' className='mainBackground'>
             <TopSection>
                 <Logo src={WebSearchLogo}/>
                 <SearchBar>
