@@ -1,7 +1,7 @@
 import React from 'react'
-import HomePage from "../components/PageComponents/Index/HomePage";
-import ResultsPage from "../components/PageComponents/Index/ResultsPage";
-import MenuResults from "../components/PageComponents/Index/ResultsPage/MenuResults";
+import HomePage from "../components/PageComponents/HomePage/HomePage";
+import ResultsPage from "../components/PageComponents/ResultsPage/ResultsPage";
+import MenuResults from "../components/PageComponents/ResultsPage/MenuResults";
 
 function Index() {
   return (

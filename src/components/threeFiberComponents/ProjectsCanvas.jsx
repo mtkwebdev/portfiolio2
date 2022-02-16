@@ -14,7 +14,7 @@ function ProjectsCanvas({width,height,margin}) {
     margin: ${margin || "auto auto"};
     ${'' /* border: 1px solid black;
     border-radius: 20px; */}
-    background: black;
+    background: white;
     z-index:-2;
   `
 
@@ -35,7 +35,7 @@ function ProjectsCanvas({width,height,margin}) {
     return (
       <group ref={torusSpin}>
         <Torus  args={[10, 3, 20, 30 ]}>
-              <meshPhongMaterial attach="material" wireframe={true} color="green" side={THREE.BackSide}/>
+              <meshPhongMaterial attach="material" wireframe={true} color="black" side={THREE.BackSide}/>
             </Torus> 
       </group>
     )
