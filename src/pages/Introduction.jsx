@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {PrismicText,usePrismicDocumentByUID} from '@prismicio/react'
+import {PrismicText ,usePrismicDocumentByUID} from '@prismicio/react'
 import test from '../static/img/largeMintyMesh.png'
 
 
@@ -74,10 +74,13 @@ function Introduction() {
               <Image src={data.image.url} backdropFilter="blur(20px)" alt="" background="rgba(255,255,255,0.2)" />
                 <div>
                   <h1>{data.title[0].text}</h1>
-                  {/* <p>{data.text[i].text}</p> */}
+                  <p>
 
+                  <PrismicText field={data.text} />
+                  </p>
+                  {/* <p>{data.text[i].text}</p> */}
                 </div>
-              {/* {console.log(data)} */}
+              {console.log(<PrismicText field={data.text}/>)}
             </Card>
           </>
         )
