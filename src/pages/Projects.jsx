@@ -23,7 +23,7 @@ const Sections = styled.section`
   padding: 50px;
   z-index: 0;
   cursor: default;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.8);
   &:nth-child(2n){
     align-self: flex-end;
     }
@@ -33,7 +33,7 @@ const Titles = styled.h1`
   font-size:5rem;
   font-weight:800;
   background:none;
-  color:rgba(0,0,0,0.2);
+  color:rgba(0,0,0,1);
   cursor: default;
   z-index: 2;
 `
