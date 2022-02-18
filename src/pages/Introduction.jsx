@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {PrismicText ,usePrismicDocumentByUID} from '@prismicio/react'
+import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
 import test from '../static/img/largeMintyMesh.png'
-
 
 const Container = styled.section`
     display: flex;
@@ -30,8 +29,11 @@ const Card = styled.div`
     img{
       border-radius: 20px 0px 0px 20px ;
       padding: 0px 10px;
+      ${'' /* -webkit-box-shadow: inset -10px 0px 19px -10px rgba(0,35,177,0.7);  */}
+      box-shadow: inset -20px 0px 50px -20px rgba(0,35,177,0.2), rgba(0, 0, 0, 0.35) 0px 5px 15px;;
     }
     div{
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       border-radius: 0px 20px 20px 0px ;
       font-size: 1.2rem;
       ${'' /* margin-left: 20px; */}
@@ -39,7 +41,12 @@ const Card = styled.div`
       display: flex;
       flex-direction: column;
       background: white;
+      h1{
+        margin: 20px 0px 0px 20px;
+      }
       p{
+        margin:0px; 
+        padding: 10px 0px 15px 10px;
         text-align: justify;
         width: 95%;
         height: fit-content;
@@ -56,7 +63,8 @@ const Image = styled.img`
     width: ${props => props.width || "20%"}; 
     height: ${props => props.height || "auto"}; 
     object-fit: ${props => props.objectFit || "contain"};
-    border-radius: ${props => props.borderRadius || "0px"}
+    border-radius: ${props => props.borderRadius || "0px"};
+    opacity: ${props => props.opacity || "1"};
 `
 
 function Introduction() {
@@ -71,16 +79,20 @@ function Introduction() {
         return (
           <>
             <Card>
-              <Image src={data.image.url} backdropFilter="blur(20px)" alt="" background="rgba(255,255,255,0.2)" />
+              <Image width={"30%"} src={data.image.url} backdropFilter="blur(20px)" alt="" background="rgba(255,255,255,0.2)" />
                 <div>
                   <h1>{data.title[0].text}</h1>
                   <p>
 
-                  <PrismicText field={data.text} />
+                  <PrismicRichText field={data.text} 
+
+                    components={{}}
+
+                  />
                   </p>
                   {/* <p>{data.text[i].text}</p> */}
                 </div>
-              {console.log(<PrismicText field={data.text}/>)}
+              {console.log(<PrismicRichText field={data.text}/>)}
             </Card>
           </>
         )
