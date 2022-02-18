@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import WebSearchLogo from '../../../static/img/websearchLogo.png'
 import googleUserIcon from '../../../static/img/googleUserIcon.png'
-// import Skills from '../components/SharedComponents/GoogleParts/Skills';
 import Skills from '../../SharedComponents/GoogleParts/Skills'
 
 const ResultsSection = styled.div`
@@ -124,6 +123,8 @@ const BottomBar = styled.header`
 `
 
 function ResultsPage({children}) {
+
+
 
   return (
       <>
