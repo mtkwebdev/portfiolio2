@@ -1,8 +1,11 @@
 import React from 'react'
+import HomeButton from '../components/SharedComponents/Links/HomeButton'
 
 function WhyMe() {
   return (
-    <div>WhyMe</div>
+    <div>
+    <HomeButton/>
+    WhyMe</div>
   )
 }
 

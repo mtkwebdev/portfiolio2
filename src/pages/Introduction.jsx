@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
 import test from '../static/img/largeMintyMesh.png'
+import HomeButton from '../components/SharedComponents/Links/HomeButton'
 
 const Container = styled.section`
     display: flex;
@@ -75,6 +76,7 @@ function Introduction() {
   return (
     <>
       <Container key="MainContainer">
+      <HomeButton/>
       <Image key="ImageBackground" position="absolute" index="-1" width="100vw" height="100vh" objectFit="cover" src={test}/>
       {Content&&(
         Content.data.introduction_group.map((data, i)=>{

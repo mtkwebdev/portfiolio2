@@ -1,8 +1,12 @@
 import React from 'react'
+import HomeButton from '../components/SharedComponents/Links/HomeButton'
 
 function Blog() {
   return (
-    <div>Blog</div>
+    <div>
+    <HomeButton/>
+    Blogs 
+    </div>
   )
 }
 

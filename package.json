@@ -21,6 +21,7 @@
     "react-intersection-observer": "^8.33.1",
     "react-player": "^2.9.0",
     "react-router-dom": "^5.0.0",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.0",
     "sass": "^1.49.0",
     "styled-components": "^5.3.3",
