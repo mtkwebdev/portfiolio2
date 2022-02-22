@@ -38,15 +38,15 @@ function MenuResults() {
     <Results>
               {/* {console.log(MenuData.data.results_section)} */}
       <p className="resultSummary">About 25,200,000 results (0.54 seconds) </p>
-      <div>{MenuData&&(
+      <div key={"MenuData" + Math.random()}>{MenuData&&(
         MenuData.data.results_section.map((result)=>{
           return (
             <>
-              <Urls>{result.result_url[0].text}</Urls>
-              <Link to={result.router_url[0].text}>
-                <Titles>{result.result_title[0].text}</Titles>
+              <Urls key={"URL" + result.result_url[0].text}>{result.result_url[0].text}</Urls>
+              <Link key={"LINK" + result.router_url[0].text} to={result.router_url[0].text}>
+                <Titles key={ "TITLES" + result.result_title[0].text}>{result.result_title[0].text}</Titles>
               </Link>
-              <Descriptions>{result.result_description[0].text}</Descriptions>
+              <Descriptions key={"DESC" + result.result_description[0].text}>{result.result_description[0].text}</Descriptions>
             </>
           )
         })
