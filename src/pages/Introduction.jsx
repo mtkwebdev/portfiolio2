@@ -24,8 +24,25 @@ const Card = styled.div`
   max-width: 800px;
   width: 50%;
   height: fit-content;
-  &:nth-child(2n+1){
+  @media only screen and (max-width: 900px){
+        width: 80vw;
+        height: auto;
+        margin: auto;
+        &:nth-child(1n+0){
+          margin-top: 60px;
+          align-self: center;
+        }
+        &:nth-child(1){
+          margin-top: 0px;
+          align-self: center;
+        }
+      }
+  
+  &:nth-child(2n+0){
       align-self: flex-end;
+      @media only screen and (max-width: 900px){
+        align-self: center;
+      }
     }
     img{
       border-radius: 20px 0px 0px 20px ;
@@ -37,13 +54,16 @@ const Card = styled.div`
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       border-radius: 0px 20px 20px 0px ;
       font-size: 1.2rem;
-      ${'' /* margin-left: 20px; */}
       padding-left: 20px;
       display: flex;
       flex-direction: column;
       background: white;
+      @media only screen and (max-width: 900px){
+        font-size: 0.5rem;
+        padding-left: 0px;
+      }
       h1{
-        margin: 20px 0px 0px 20px;
+        margin: 20px 0px 0px 10px;
       }
       p{
         margin:0px; 

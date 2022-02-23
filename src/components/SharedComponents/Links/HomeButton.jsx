@@ -7,6 +7,7 @@ const Container = styled.div`
     position: absolute;
     top: 20px;
     left: 20px;
+    z-index: 1;
     a{
         color: rgba(0,0,0,0.5);
         font-size:2rem;
