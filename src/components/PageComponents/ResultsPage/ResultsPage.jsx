@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {usePrismicDocumentByUID} from '@prismicio/react'
 import WebSearchLogo from '../../../static/img/websearchLogo.png'
 import googleUserIcon from '../../../static/img/googleUserIcon.png'
 import Skills from '../../SharedComponents/GoogleParts/Skills'
@@ -165,7 +166,7 @@ const BottomBar = styled.header`
 `
 
 function ResultsPage({children}) {
-
+    const [Links] = usePrismicDocumentByUID('links', 'mylinks')
 
 
   return (
@@ -181,11 +182,11 @@ function ResultsPage({children}) {
             <BottomBar>
                 <div className='headerTexts'>
                     <span>
-                    <p className='text'>All Results</p>
-                    <a className='text' target="_blank" rel="noreferrer" href='https://drive.google.com/file/d/1B0jvaayPjSdnyNQDVVqykM01n29X_24o/view?usp=sharing'>CV</a>
-                    <a className='text' target="_blank" rel="noreferrer" href='https://www.linkedin.com/in/mohammadkawadri/'>Linkedin</a>
-                    <a className='text' target="_blank" rel="noreferrer" href='href="mailto:kwaj93@gmail.com'>Email</a>
-                    <a className='text' target="_blank" rel="noreferrer" href='https://github.com/mtkwebdev'>GitHub</a>
+                        <p className='text'>All Results</p>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[0].link[0].text : ''}>{Links ? Links.data.links_group[0].link_name[0].text : ''}</a>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[1].link[0].text : ''}>{Links ? Links.data.links_group[1].link_name[0].text : ''}</a>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[2].link[0].text : ''}>{Links ? Links.data.links_group[2].link_name[0].text : ''}</a>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[3].link[0].text : ''}>{Links ? Links.data.links_group[3].link_name[0].text : ''}</a>
                     </span>
                 </div>
                 <div className='headerIcons'>

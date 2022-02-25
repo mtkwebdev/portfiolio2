@@ -10,6 +10,9 @@ const Results = styled.div`
       @media only screen and (max-width:900px){
         width: 90vw;
       }
+        a {width: fit-content;
+          display:inline-block;
+        }
       .resultSummary{
         color:grey;
         font-weight:400;
@@ -21,7 +24,7 @@ const Titles = styled.h1`
   font-weight: 500;
   margin: 0px 0px 0px 0px;
   color: blue;
-  width: 50%;
+  width: fit-content;
   cursor:pointer;
   @media only screen and (max-width:900px){
         width: 100%;
@@ -50,13 +53,13 @@ function MenuResults() {
       <div key={"MenuData" + Math.random()}>{MenuData&&(
         MenuData.data.results_section.map((result)=>{
           return (
-            <>
+            <div>
               <Urls key={"URL" + result.result_url[0].text}>{result.result_url[0].text}</Urls>
               <Link key={"LINK" + result.router_url[0].text} to={result.router_url[0].text}>
                 <Titles key={ "TITLES" + result.result_title[0].text}>{result.result_title[0].text}</Titles>
               </Link>
               <Descriptions key={"DESC" + result.result_description[0].text}>{result.result_description[0].text}</Descriptions>
-            </>
+            </div>
           )
         })
       )}</div>
