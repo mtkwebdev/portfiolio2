@@ -7,6 +7,12 @@ const Results = styled.div`
       margin: 20px auto;
       width: 80vw;
       height: auto;
+      @media only screen and (max-width:900px){
+        width: 90vw;
+      }
+        a {width: fit-content;
+          display:inline-block;
+        }
       .resultSummary{
         color:grey;
         font-weight:400;
@@ -18,8 +24,11 @@ const Titles = styled.h1`
   font-weight: 500;
   margin: 0px 0px 0px 0px;
   color: blue;
-  width: 50%;
+  width: fit-content;
   cursor:pointer;
+  @media only screen and (max-width:900px){
+        width: 100%;
+      }
 `
 
 const Urls = styled.p`
@@ -30,6 +39,9 @@ const Descriptions = styled.p`
   font-size:0.9rem;
   margin: 0px;
   width: 50%; 
+  @media only screen and (max-width:900px){
+        width: 100%;
+      }
 `
 
 function MenuResults() {
@@ -38,16 +50,16 @@ function MenuResults() {
     <Results>
               {/* {console.log(MenuData.data.results_section)} */}
       <p className="resultSummary">About 25,200,000 results (0.54 seconds) </p>
-      <div>{MenuData&&(
+      <div key={"MenuData" + Math.random()}>{MenuData&&(
         MenuData.data.results_section.map((result)=>{
           return (
-            <>
-              <Urls>{result.result_url[0].text}</Urls>
-              <Link to={result.router_url[0].text}>
-                <Titles>{result.result_title[0].text}</Titles>
+            <div>
+              <Urls key={"URL" + result.result_url[0].text}>{result.result_url[0].text}</Urls>
+              <Link key={"LINK" + result.router_url[0].text} to={result.router_url[0].text}>
+                <Titles key={ "TITLES" + result.result_title[0].text}>{result.result_title[0].text}</Titles>
               </Link>
-              <Descriptions>{result.result_description[0].text}</Descriptions>
-            </>
+              <Descriptions key={"DESC" + result.result_description[0].text}>{result.result_description[0].text}</Descriptions>
+            </div>
           )
         })
       )}</div>

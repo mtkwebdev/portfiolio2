@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
 import test from '../static/img/largeMintyMesh.png'
+import HomeButton from '../components/SharedComponents/Links/HomeButton'
 
 const Container = styled.section`
     display: flex;
@@ -23,8 +24,25 @@ const Card = styled.div`
   max-width: 800px;
   width: 50%;
   height: fit-content;
-  &:nth-child(2n){
+  @media only screen and (max-width: 900px){
+        width: 80vw;
+        height: auto;
+        margin: auto;
+        &:nth-child(1n+0){
+          margin-top: 60px;
+          align-self: center;
+        }
+        &:nth-child(1){
+          margin-top: 0px;
+          align-self: center;
+        }
+      }
+  
+  &:nth-child(2n+0){
       align-self: flex-end;
+      @media only screen and (max-width: 900px){
+        align-self: center;
+      }
     }
     img{
       border-radius: 20px 0px 0px 20px ;
@@ -36,13 +54,16 @@ const Card = styled.div`
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       border-radius: 0px 20px 20px 0px ;
       font-size: 1.2rem;
-      ${'' /* margin-left: 20px; */}
       padding-left: 20px;
       display: flex;
       flex-direction: column;
       background: white;
+      @media only screen and (max-width: 900px){
+        font-size: 0.5rem;
+        padding-left: 0px;
+      }
       h1{
-        margin: 20px 0px 0px 20px;
+        margin: 20px 0px 0px 10px;
       }
       p{
         margin:0px; 
@@ -60,6 +81,8 @@ const Image = styled.img`
     z-index: ${props=> props.index || "0"};
     background: ${props => props.background || "none"};
     backdrop-filter: ${props =>props.backdropFilter || "none"};
+    background: ${props=> props.background || "none"};
+    backgroundImg: ${props=> `url(${props.backgroundImg})` || "none"};
     width: ${props => props.width || "20%"}; 
     height: ${props => props.height || "auto"}; 
     object-fit: ${props => props.objectFit || "contain"};
@@ -72,27 +95,19 @@ function Introduction() {
 
   return (
     <>
-      <Container>
-      <Image position="absolute" index="-1" width="100vw" height="100vh" objectFit="cover" src={test}/>
+      <Container key="MainContainer">
+      <HomeButton/>
+      <Image key="ImageBackground" position="absolute" index="-1" width="100vw" height="100vh" objectFit="cover" src={test}/>
       {Content&&(
-      Content.data.introduction_group.map((data, i)=>{
+        Content.data.introduction_group.map((data, i)=>{
         return (
           <>
-            <Card>
-              <Image width={"30%"} src={data.image.url} backdropFilter="blur(20px)" alt="" background="rgba(255,255,255,0.2)" />
-                <div>
-                  <h1>{data.title[0].text}</h1>
-                  <p>
-
-                  <PrismicRichText field={data.text} 
-
-                    components={{}}
-
-                  />
-                  </p>
-                  {/* <p>{data.text[i].text}</p> */}
+            <Card key={"Card" + i}>
+              <Image key={"Image " + i} width={"30%"} src={data.image.url} backdropFilter="blur(20px)" alt="" background="rgba(255,255,255,0.2)" backgroundImg={test}/>
+                <div key={"Text Container" + i}>
+                  <h1 key={"Title "+ i}>{data.title[0].text}</h1>
+                    <PrismicRichText key={"Texts " + i} field={data.text} />
                 </div>
-              {console.log(<PrismicRichText field={data.text}/>)}
             </Card>
           </>
         )

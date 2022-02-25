@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import blueWeb from '../static/videoDrafts/projects.mp4'
+import HomeButton from '../components/SharedComponents/Links/HomeButton'
 
 import Video from '../components/SharedComponents/Backgrounds/Video'
     // url={"https://link.eu1.storjshare.io/s/jwxl5q6y5dul7zj4m6np5q3p3p6q/testbucket/introduction.mp4?wrap=0"}
@@ -55,8 +56,9 @@ const Titles = styled.h1`
 function Projects() {
   return (
     <Container>
+    <HomeButton/>
       <Sections id='one'>
-        <Link id="home" to="/">HOME<i className="fa-regular fa-house-blank"></i></Link>
+
         <Titles>PROJECT- EJDFLWEFJO</Titles>
         <Subsection>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.

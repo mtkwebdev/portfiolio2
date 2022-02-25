@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-//
+import {usePrismicDocumentByUID} from '@prismicio/react'
 import WebSearchLogo from '../../../static/img/websearchLogo.png'
 import googleUserIcon from '../../../static/img/googleUserIcon.png'
 import Skills from '../../SharedComponents/GoogleParts/Skills'
@@ -10,8 +10,9 @@ const IntroSection = styled.div`
     h2{
         position:absolute;
         bottom: 1rem;
-        left: 42.5vw;
-        right: 42.5vw;
+        width:100vw;
+        ${'' /* left: 42.5vw;
+        right: 42.5vw; */}
         font-weight:200;
         animation: bounce 2s infinite;
         text-align:center;
@@ -39,17 +40,23 @@ const TopBar = styled.header`
                 margin-top: 10px;
                 margin-left: 10px;
                     .text{
+                        display: flex;
+                        flex-direction: row;
                         cursor:pointer;
-                        margin: auto 10px
-                        }
-                    a{
+                        margin: auto 10px;
+                        width: fit-content;
                         text-decoration:none;
                         color:black;
                         }
-                }
-
-            span:nth-child(2){
-                ${'' /* margin-right: 100px */}
+                    ${'' /* .text:nth-child(1), .text:nth-child(2){
+                        margin-right: 80%;
+                        justify-self: flex-start;
+                        background: blue;
+                    }
+                    .text:nth-child(3), .text:nth-child(4){
+                        justify-self: flex-end;
+                        background: red;
+                    } */}
                 }
 
         }
@@ -82,6 +89,10 @@ const MidSection = styled.div`
         margin:auto;
         padding:0px;
         width: 80vw;
+        cursor: default;
+        a{
+            cursor:default;
+        }
 `
 
 const Logo = styled.img`
@@ -93,14 +104,12 @@ const Logo = styled.img`
         max-width:30vw;
         height: auto;
         object-fit:contain;
+        cursor:pointer;
 `
 
 const SearchBar = styled.div`
         display:flex;
         margin: 10px auto;
-        min-width:300px;
-        width: 40vw;
-        height: 2.5rem;
         border-radius: 2em;
         border: 1px solid rgba(0,0,0,0.2);
         background:none;
@@ -112,13 +121,19 @@ const SearchBar = styled.div`
     p{
         margin:6px 20px 10px 25px;
         width:90%;
-        height: 1.8rem;
+        height: auto;
         text-align: center;
         font-size:1.2rem;
         border:none;
         outline: none;
         background:none;
         overflow: scroll;
+        @media only screen and (max-width: 786px){
+            font-size:0.8rem;
+        }
+        @media only screen and (max-width: 500px){
+            font-size:0.5rem;
+        }
     }
     &:hover{
         border: none;
@@ -138,38 +153,51 @@ const Buttons= styled.div`
         display:flex;
         flex-direction:row;
         margin: 20px auto;
-        width:fit-content;
-        justify-items:center;
-    button{
-        margin: 0px 10px;
-        padding: 13px;
-        width: 150px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        background: rgba(0,0,0,0.05);
-        border: 1px solid rgba(0,0,0,0);
-    }
-    button:hover{
-        border: 1px solid lightgrey;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
-    }
+        min-width: 200px;
+        width: 400px;
+        justify-content:space-between;
+        @media only screen and (max-width: 600px){
+            width: 100%;
+        }
+        a{
+            width: fit-content;
+            margin: 0px;
+            padding: 0px;
+            .buttons{
+                padding: 13px;
+                width: 150px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                background: rgba(0,0,0,0.05);
+                border: 1px solid rgba(0,0,0,0);
+                @media only screen and (max-width: 600px){
+                    width: 100px;
+                    margin: 10px;
+                    padding: 5px;
+                }
+            }
+            .buttons:hover{
+                border: 1px solid lightgrey;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 2px 0px;
+            }
+        }
 `
 
 function HomePage() {
-
+    const [Links] = usePrismicDocumentByUID('links', 'mylinks')
   return (
       <>
         <IntroSection id='home' className='mainBackground' >
             <TopBar>
                 <div className='headerTexts'>
                     <span>
-                    <a className='text' target="_blank" rel="noreferrer" href='https://drive.google.com/file/d/1B0jvaayPjSdnyNQDVVqykM01n29X_24o/view?usp=sharing'>CV</a>
-                    <a className='text' target="_blank" rel="noreferrer" href='https://www.linkedin.com/in/mohammadkawadri/'>Linkedin</a>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[0].link[0].text : ''}>{Links ? Links.data.links_group[0].link_name[0].text : ''}</a>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[1].link[0].text : ''}>{Links ? Links.data.links_group[1].link_name[0].text : ''}</a>
                     </span>
                     <span>
-                    <a className='text' target="_blank" rel="noreferrer" href='href="mailto:kwaj93@gmail.com'>Email</a>
-                    <a className='text' target="_blank" rel="noreferrer" href='https://github.com/mtkwebdev'>GitHub</a>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[2].link[0].text : ''}>{Links ? Links.data.links_group[2].link_name[0].text : ''}</a>
+                        <a className='text' target="_blank" rel="noreferrer" href={Links ? Links.data.links_group[3].link[0].text : ''}>{Links ? Links.data.links_group[3].link_name[0].text : ''}</a>
                     </span>
                 </div>
                 <div className='headerIcons'>
@@ -184,8 +212,8 @@ function HomePage() {
                     <p>Looking for a Junior / Mid - Level Front-End software developer? </p>
                 </SearchBar>
                 <Buttons>
-                    <a href="#results"><button>Search</button></a>
-                    <button>Contact Me!</button>
+                    <a href="#results"><button className='buttons'>Search</button></a>
+                    <a href="/#"><button className='buttons'>Contact Me!</button></a>
                 </Buttons>
             </MidSection>
             <h2>Scroll Down to see more!</h2>
