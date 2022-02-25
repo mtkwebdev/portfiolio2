@@ -7,6 +7,9 @@ const Results = styled.div`
       margin: 20px auto;
       width: 80vw;
       height: auto;
+      @media only screen and (max-width:900px){
+        width: 90vw;
+      }
       .resultSummary{
         color:grey;
         font-weight:400;
@@ -20,6 +23,9 @@ const Titles = styled.h1`
   color: blue;
   width: 50%;
   cursor:pointer;
+  @media only screen and (max-width:900px){
+        width: 100%;
+      }
 `
 
 const Urls = styled.p`
@@ -30,6 +36,9 @@ const Descriptions = styled.p`
   font-size:0.9rem;
   margin: 0px;
   width: 50%; 
+  @media only screen and (max-width:900px){
+        width: 100%;
+      }
 `
 
 function MenuResults() {

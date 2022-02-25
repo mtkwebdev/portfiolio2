@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import {usePrismicDocumentByUID} from '@prismicio/react'
 import gridIcon from '../../../static/img/gridIcon.png'
 
-
-const Container = styled.div`
+const Data = styled.div`
         position:fixed;
         z-index:5;
         overflow: scroll;
@@ -55,7 +54,7 @@ function Skills() {
       <>
                     <img key={"skill" + Math.random()} className='icons' src={gridIcon} alt="" onClick={()=>setShowSkills(!showSkills)}  />
             {showSkills ? (
-        <Container key={"Skill Container" + Math.random()} className='mainBackground' onMouseLeave={()=>{setShowSkills(!showSkills)}}>
+        <Data key={"Skill Data" + Math.random()} className='mainBackground' onMouseLeave={()=>{setShowSkills(!showSkills)}}>
             <div >
                 <h1 key="skillTitle" className='title'>My skills</h1>
                 <div key="skillGrid" className='grid'>
@@ -63,7 +62,7 @@ function Skills() {
                     mySkills && 
                         mySkills.data.skills.map((data)=>{
                             return (
-                                <div key={"Square" + data.skill_name[0].text} className='gridBox' >
+                                <div key={"GridBox" + data.skill_name[0].text} className='gridBox' >
                                     <img className="skillImages" key={"Picture" + data.skill_name[0].text} src={data.skill_image.url} alt="" />
                                     <p className="skillText" key={"Desc" + data.skill_name[0].text}>{data.skill_name[0].text}</p>
                                 </div>
@@ -72,7 +71,7 @@ function Skills() {
                     }
                 </div>
             </div>
-        </Container>
+        </Data>
                     ):(<div></div>)}
       </>
   )
