@@ -21,7 +21,7 @@ function Routes() {
         <Route component={Index} exact path="/"/>
         <Route component={Introduction} path="/introduction"/>
         <Route component={Projects} path="/projects"/>
-        <Route component={WhyMe} path="/why_me"/>
+        <Route component={WhyMe} path="/why"/>
         <Route component={Cv} path="/cv"/>
         <Route component={Blog} path="/blog"/>
         <Route component={Misc} path="/misc"/>
