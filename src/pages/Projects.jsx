@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import blueWeb from '../static/videoDrafts/projects.mp4'
 import HomeButton from '../components/SharedComponents/Links/HomeButton'
+import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
 
 import Video from '../components/SharedComponents/Backgrounds/Video'
     // url={"https://link.eu1.storjshare.io/s/jwxl5q6y5dul7zj4m6np5q3p3p6q/testbucket/introduction.mp4?wrap=0"}
@@ -15,6 +16,12 @@ const Container = styled.div`
   height:100vh;
   width:100vw;
   background: rgba(255,255,255,0.5);
+  span{
+    height:10px;
+  }
+  @media only screen and (max-width:900px){
+    .video{display:none}
+  }
 `
 
 const Sections = styled.section`
@@ -25,88 +32,86 @@ const Sections = styled.section`
   z-index: 0;
   cursor: default;
   background: rgba(255,255,255,0.8);
-  &:nth-child(2n){
+  &:nth-child(2n+1){
     align-self: flex-end;
     }
+  @media only screen and (max-width:900px){
+    width: 100%;
+    margin:auto;
+    align-self:center;
+    &:nth-child(2n+1){
+      align-self:center;
+    }
+  }
 `
 const Titles = styled.h1`
   width:fit-content;
-  font-size:5rem;
+  margin-bottom: 0px;
+  padding: 10px;
+  font-size:3rem;
   font-weight:800;
   background:none;
   color:rgba(0,0,0,1);
   cursor: default;
   z-index: 2;
+  @media only screen and (max-width:900px){
+    font-size: 1.5rem;
+  }
 `
   const Subsection = styled.div`
+  display: flex;
+  flex-direction: column;
   width:90%;
+  margin-top: 0px;
   height: fit-content;
-  ${'' /* margin: 0px 230px 0px 20px;
-    padding: 0px 20px 0px 20px; */}
   border-radius: 10px;
-  font-size:2rem;
+  font-size:1.2rem;
   font-weight: 200;
   color:black;
   background: none;
   cursor: default;
   border-radius: 20px;
-  ${'' /* backdrop-filter: blur(20px); */}
+  p{ padding: 10px;}
+  img{
+    width:auto;
+    height: 20vw;
+    margin: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  @media only screen and (max-width:900px){
+    width: 100%;
+    img{
+    width:auto;
+    height: 30vw;
+  }
+  }
   `
 
 function Projects() {
+  const [Content] = usePrismicDocumentByUID('projects','projects')
+
   return (
     <Container>
     <HomeButton/>
-      <Sections id='one'>
 
-        <Titles>PROJECT- EJDFLWEFJO</Titles>
+      {Content && Content.data.repeatable_project.map((data, i)=>{
+        return (
+      <Sections>
+        {console.log(data)}
+
+        <Titles>{data.project_title[0].text}</Titles>
         <Subsection>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
+          <img src={data.project_image.url} alt="" />
+          <PrismicRichText field={data.project_description}/>
+          <PrismicRichText field={data.project_tech_used}/>
+          {/* <a href={data.project_link[0].text}>Link</a>  */}
         </Subsection>
       </Sections>
-
-      <Sections id="two">
-        <Titles>PROJECT- wkejhfwe</Titles>
-        <Subsection>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-        </Subsection> 
-      </Sections>
-
-      <Sections id="three">
-        <Titles>PROJECT- wefnkwejf</Titles>  
-        <Subsection>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-        </Subsection>
-      </Sections>
-
-      <Sections id="four"> 
-        <Titles>PROJECT- wejlef</Titles>
-        <Subsection>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-        </Subsection>  
-      </Sections>
-
-      <Sections id="five">
-        <Titles>PROJECT- qwejkdw</Titles> 
-        <Subsection>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-        </Subsection>
-        </Sections>
-
-      <Sections id="six">
-       <Titles>PROJECT - qwldkn</Titles>
-       <Subsection>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum, repudiandae accusamus quasi obcaecati totam minima! Inventore eum iste, error temporibus porro quidem facilis vel a odio reiciendis molestias eaque.
-        </Subsection>
-       </Sections>
-       <Video src={blueWeb}/>
+        )
+      })}
+        <Video src={blueWeb}/>
     </Container>
   )
 }
