@@ -1,13 +1,12 @@
 ##TO DO
 
 0 Finish project section.
-_call project data from prismic and render to page.
-_ensure page is responsive.
+x call project data from prismic and render to page.
+x ensure page is responsive.
 _include links to github and live sites...if not private etc.
 
 1 Finish CV section
 _implement simple cards and design. 
-_write CV in prismic.
 _call data from prismic.
 
 2 finish /why
