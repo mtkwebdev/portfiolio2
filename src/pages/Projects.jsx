@@ -96,16 +96,16 @@ function Projects() {
     <Container>
     <HomeButton/>
 
-      {Content && Content.data.repeatable_project.map((data, i)=>{
+      {Content && Content.data.repeatable_project.map((items, i)=>{
         return (
       <Sections>
-        {console.log(data)}
+        {console.log(items)}
 
-        <Titles>{data.project_title[0].text}</Titles>
+        <Titles>{items.project_title[0].text}</Titles>
         <Subsection>
-          <img src={data.project_image.url} alt="" />
-          <PrismicRichText field={data.project_description}/>
-          <PrismicRichText field={data.project_tech_used}/>
+          <img src={items.project_image.url} alt="" />
+          <PrismicRichText field={items.project_description}/>
+          <PrismicRichText field={items.project_tech_used}/>
           {/* <a href={data.project_link[0].text}>Link</a>  */}
         </Subsection>
       </Sections>
