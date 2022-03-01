@@ -113,10 +113,15 @@ const SearchBar = styled.div`
         border-radius: 2em;
         border: 1px solid rgba(0,0,0,0.2);
         background:none;
+        width: 50%;
 
     span{
         z-index:1;
     }
+    input{width: 90%;
+    margin: auto;
+    background: white;
+    border:none;}
 
     p{
         margin:6px 20px 10px 25px;
@@ -127,7 +132,7 @@ const SearchBar = styled.div`
         border:none;
         outline: none;
         background:none;
-        overflow: scroll;
+        overflow: none;
         @media only screen and (max-width: 786px){
             font-size:0.8rem;
         }
@@ -210,6 +215,7 @@ function HomePage() {
                 <SearchBar>
                     <i className="searchIcon fa-solid fa-magnifying-glass"></i>
                     <p>Looking for a Junior / Mid - Level Front-End software developer? </p>
+                    {/* <input disabled value="Looking for a Junior / Mid - Level Front-End software developer?" /> */}
                 </SearchBar>
                 <Buttons>
                     <a href="#results"><button className='buttons'>Search</button></a>
