@@ -50,12 +50,28 @@ function Contact() {
     console.log(contact)
   }
 
-  function sendInfo(){
+  async function sendInfo(){
       if((contact.name && contact.email) && contact.message !== ""){
-        console.log('send info!')
-        } else {console.log("no info to send!")
-              return
-              }
+        console.log('sending infomation!')
+        const res = await fetch("https://mkportfolio-nodemailer.herokuapp.com/contact",{
+          method: "POST",
+          headers: {"Content-type":"application/json"},
+          body: JSON.stringify({contact}),
+        })
+        .then(res=> res.json())
+        .then(async (res) => {
+          const resData = await res;
+          console.log(resData);
+          if (resData.status === "success") {
+            alert("Message Sent");
+          } else if (resData.status === "fail") {
+            alert("Message failed to send");
+          }
+        })
+        } else {
+          console.log("incomplete contact form!")
+          return
+          }
   }
 
   return (
