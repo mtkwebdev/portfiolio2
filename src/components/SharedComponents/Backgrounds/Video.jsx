@@ -3,18 +3,18 @@ import styled from 'styled-components'
 import ReactPlayer from 'react-player'
 
 const MediaContainer = styled.div`
-overflow-y:scroll;
-  height:100vh;
-  width:100vw;`
+overflow-y:none;
+  height:auto;
+  width:auto;`
 
 const Media = styled.div`
 position:absolute;
 top:0px;
 left:0px;
-width:100%;
-height:100%;
-object-fit: contain;
-overflow:hidden;
+width:auto;
+height:auto;
+object-fit: cover;
+overflow:none;
 z-index:-1;
 `
 
