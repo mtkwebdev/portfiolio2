@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useRef } from "react"
 import styled from "styled-components"
 import Video from "../components/SharedComponents/Backgrounds/Video"
 import HomeButton from "../components/SharedComponents/Links/HomeButton"
@@ -67,12 +67,12 @@ const Container = styled.div`
   }
 `
 
-const Warning = styled.div`
-margin: auto;
-height: 20px; 
-width: 50%;
-background: red;
-`
+// const Warning = styled.div`
+// margin: auto;
+// height: 20px; 
+// width: 50%;
+// background: red;
+// `
 
 function Contact() {
   const nameRef = useRef();
@@ -106,28 +106,7 @@ function Contact() {
   }
 
   async function sendInfo(){
-      if((name && email) && message !== ''){
-        console.log('sending infomation!')
-        // console.log(name.key, name.value)
-        console.log(JSON.stringify([name,email,message])
-        // const res = await fetch("https://mkportfolio-nodemailer.herokuapp.com/contact",{
-        //   method: "POST",
-        //   headers: {"Content-type":"application/json"},
-        //   body: JSON.stringify({contact}),
-        // })
-        // .then(res=> res.json())
-        // .then(async (res) => {
-        //   const resData = await res;
-        //   console.log(resData);
-        //   if (resData.status === "success") {
-        //     alert("Message Sent");
-        //   } else if (resData.status === "fail") {
-        //     alert("Message failed to send");
-        //   }
-        // })
-        } else {
-          console.log("incomplete contact form!")
-          }
+    console.log('Info Sent')
   }
 
   return (
