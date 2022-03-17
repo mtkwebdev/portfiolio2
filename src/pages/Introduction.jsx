@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
 import test from '../static/img/largeMintyMesh.png'
 import HomeButton from '../components/SharedComponents/Links/HomeButton'
+import Hero from '../components/SharedComponents/Backgrounds/Hero'
 
 const Container = styled.section`
     display: flex;
@@ -17,33 +18,13 @@ const Container = styled.section`
 const Card = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 50px;
   padding: 15px;
+  margin: 50px auto;
   border-radius: 0px 20px 20px 0px ;
-  min-width: 300px;
-  max-width: 800px;
-  width: 50%;
+  width: 80%;
   height: fit-content;
-  @media only screen and (max-width: 900px){
-        width: 80vw;
-        height: auto;
-        margin: auto;
-        &:nth-child(1n+0){
-          margin-top: 60px;
-          align-self: center;
-        }
-        &:nth-child(1){
-          margin-top: 0px;
-          align-self: center;
-        }
-      }
-  
-  &:nth-child(2n+0){
-      align-self: flex-end;
-      @media only screen and (max-width: 900px){
-        align-self: center;
-      }
-    }
+  align-self: center;
+
     img{
       border-radius: 20px 0px 0px 20px ;
       padding: 0px 10px;
@@ -55,6 +36,7 @@ const Card = styled.div`
       border-radius: 0px 20px 20px 0px ;
       font-size: 1.2rem;
       padding-left: 20px;
+      padding-bottom: 20px;
       display: flex;
       flex-direction: column;
       background: white;
@@ -66,7 +48,7 @@ const Card = styled.div`
         margin: 20px 0px 0px 10px;
       }
       p{
-        margin:0px; 
+        margin:auto 0px; 
         padding: 10px 0px 15px 10px;
         text-align: justify;
         width: 95%;
@@ -96,6 +78,7 @@ function Introduction() {
   return (
     <>
       <Container key="MainContainer">
+      <Hero text="INTRODUCTION" image={test}/>
       <HomeButton/>
       <Image key="ImageBackground" position="absolute" index="-1" width="100vw" height="100vh" objectFit="cover" src={test}/>
       {Content&&(
@@ -103,7 +86,7 @@ function Introduction() {
         return (
           <>
             <Card key={"Card" + i}>
-              <Image key={"Image " + i} width={"30%"} src={data.image.url} backdropFilter="blur(20px)" alt="" background="rgba(255,255,255,0.2)" backgroundImg={test}/>
+              <Image key={"Image " + i} width={"20%"} src={data.image.url} backdropFilter="blur(20px)" alt="" background="rgba(255,255,255,0.2)" backgroundImg={test}/>
                 <div key={"Text Container" + i}>
                   <h1 key={"Title "+ i}>{data.title[0].text}</h1>
                     <PrismicRichText key={"Texts " + i} field={data.text} />
