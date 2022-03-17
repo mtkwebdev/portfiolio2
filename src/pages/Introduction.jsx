@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
+// import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
+import {PrismicRichText} from '@prismicio/react'
+import { useSelector } from 'react-redux'
 import test from '../static/img/largeMintyMesh.png'
 import HomeButton from '../components/SharedComponents/Links/HomeButton'
 
@@ -75,7 +77,6 @@ const Card = styled.div`
     }
 
 `
-
 const Image = styled.img`
     position: ${props => props.position || "relative"};
     z-index: ${props=> props.index || "0"};
@@ -91,15 +92,16 @@ const Image = styled.img`
 `
 
 function Introduction() {
-  const [Introduction] = usePrismicDocumentByUID('introduction','introduction_group')
+  // const [Introduction] = usePrismicDocumentByUID('introduction','introduction_group')
+  const introductionState = useSelector((state)=>state.PrismicSlice.Introduction)
 
   return (
     <>
       <Container key="MainContainer">
       <HomeButton/>
       <Image key="ImageBackground" position="absolute" index="-1" width="100vw" height="100vh" objectFit="cover" src={test}/>
-      {Introduction&&(
-        Introduction.data.introduction_group.map((data, i)=>{
+      {introductionState && (
+        introductionState.data.introduction_group.map((data, i)=>{
         return (
           <>
             <Card key={"Card" + i}>
