@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
 import HomeButton from '../components/SharedComponents/Links/HomeButton'
 import Video from '../components/SharedComponents/Backgrounds/Video'
-import cvVideo from '../static/videoDrafts/CV.mp4'
+// import cvVideo from '../static/videoDrafts/CV.mp4'
 
 function Cv() {
 
@@ -70,7 +70,7 @@ const Container = styled.div`
           </Sections>
           )
       })}
-        <Video src={cvVideo}/>
+        {/* <Video src={cvVideo}/> */}
     </Container>
   )
 }

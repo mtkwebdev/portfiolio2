@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import styled from "styled-components"
 import Video from "../components/SharedComponents/Backgrounds/Video"
 import HomeButton from "../components/SharedComponents/Links/HomeButton"
-import contactVideo from "../static/videoDrafts/contact.mp4"
+// import contactVideo from "../static/videoDrafts/contact.mp4"
 import axios from "axios"
 import '../styles'
 
@@ -144,7 +144,7 @@ function Contact() {
 
           <button type="button" onClick={()=>sendInfo()}>Click to Send Me A Message!</button>
         </form>
-      <Video src={contactVideo}/>
+      {/* <Video src={contactVideo}/> */}
     </Container>
   )
 }
