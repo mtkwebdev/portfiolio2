@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import { PrismicProvider } from '@prismicio/react';
-import { client } from './prismic'
+import { client } from './utils/prismic'
 import reportWebVitals from './reportWebVitals';
 
 
