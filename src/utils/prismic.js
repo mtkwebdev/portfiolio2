@@ -1,5 +1,5 @@
 import * as prismic from "@prismicio/client"
-import { type } from "@testing-library/user-event/dist/type"
+
 
 const connect = process.env.REACT_APP_PRISMIC_IO
 export const mkportfolio = 'mohammadkawadri'

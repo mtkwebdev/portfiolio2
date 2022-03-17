@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
 import HomeButton from '../components/SharedComponents/Links/HomeButton'
-import Video from '../components/SharedComponents/Backgrounds/Video'
+// import Video from '../components/SharedComponents/Backgrounds/Video'
 // import cvVideo from '../static/videoDrafts/CV.mp4'
 
 function Cv() {
 
-  const [Content] = usePrismicDocumentByUID('cv','cv');
+  const [CV] = usePrismicDocumentByUID('cv','cv');
 
 const Container = styled.div`
   display:flex;
@@ -54,7 +54,7 @@ const Container = styled.div`
     <Container>
       <HomeButton/>
 
-      {Content && Content.data.experience.map((items, i)=>{
+      {CV && CV.data.experience.map((items, i)=>{
         console.log(items)
           return (
           <Sections>

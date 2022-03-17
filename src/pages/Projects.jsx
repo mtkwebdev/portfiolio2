@@ -90,13 +90,13 @@ const Titles = styled.h1`
   `
 
 function Projects() {
-  const [Content] = usePrismicDocumentByUID('projects','projects')
+  const [Projects] = usePrismicDocumentByUID('projects','projects')
 
   return (
     <Container>
     <HomeButton/>
 
-      {Content && Content.data.repeatable_project.map((items, i)=>{
+      {Projects && Projects.data.repeatable_project.map((items, i)=>{
         return (
       <Sections>
         {console.log(items)}
