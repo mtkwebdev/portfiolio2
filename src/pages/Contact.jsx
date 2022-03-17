@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Video from "../components/SharedComponents/Backgrounds/Video"
 import HomeButton from "../components/SharedComponents/Links/HomeButton"
 import contactVideo from "../static/videoDrafts/contact.mp4"
+import axios from "axios"
 import '../styles'
 
 const Container = styled.div`
@@ -11,7 +12,8 @@ const Container = styled.div`
     flex-direction: column;
     margin: 10vh auto;
     background: rgba(255,255,255,0.8);
-    width: 50vw;
+    min-width: 200px;
+    width: 30vw;
     padding: 50px 20px;
     font-size: 1.2rem;
     border-radius: 20px;
@@ -23,7 +25,7 @@ const Container = styled.div`
     }
     input{
       margin: 20px auto;
-      width: 50%;
+      width: 80%;
       height: auto;
       outline:none;
       padding: 12px;
@@ -45,7 +47,7 @@ const Container = styled.div`
     textarea{
       margin: 20px auto;
       min-height: 5rem;
-      min-width: 50%;
+      min-width: 80%;
       max-width: 80%;
       width: 50%;
       height: auto;
@@ -83,9 +85,9 @@ function Contact() {
   let message = ''
 
   function collectInfo(){
-    name = {key: nameRef.current.name, value: nameRef.current.value}
-    email = {key:emailRef.current.name, value:emailRef.current.value}
-    message = {key: messageRef.current.name, value: messageRef.current.value}
+    name = nameRef.current.value
+    email = emailRef.current.value
+    message = messageRef.current.value
     validateInfo()
   }
 
@@ -93,20 +95,37 @@ function Contact() {
     const nameRegex = /^[^\\//±!@£$%^&*_+§¡€#¢§¶•ªº«\\<>?:;|=.,0-9]{2,}$/
     const emailRegex = /^(([^<>()\\[\]\\.,;:\s@"]+(\\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const messageRegex = /^[a-zA-Z0-9\s,.]*$/
-    
-    if(name.value  && nameRegex.test(name.value) === true){ nameRef.current.className = "valid";}
+
+    if(name && nameRegex.test(name) === true){ nameRef.current.className = "valid";}
     else{nameRef.current.className = "invalid"; console.log('Name error!')};
 
-    if(email.value  && emailRegex.test(email.value) === true){ emailRef.current.className = "valid";}
+    if(email && emailRegex.test(email) === true){ emailRef.current.className = "valid";}
     else{emailRef.current.className = "invalid"; console.log('email error!')};
 
-    if(message.value  && messageRegex.test(message.value) === true){ messageRef.current.className = " defaultFont valid";}
+    if(message && messageRegex.test(message) === true){ messageRef.current.className = " defaultFont valid";}
     else{messageRef.current.className = "defaultFont invalid"; console.log('Message error!')};
-
   }
 
   async function sendInfo(){
-    console.log('Info Sent')
+    if ((name && email) && message ){
+      await axios({
+        method: 'post',
+        url: 'https://mkportfolio-nodemailer.herokuapp.com/contact', 
+        data: {
+          name: name,
+          email: email,
+          message: message
+        }
+      }).then(res=> {
+          if (res.status === "success"){
+          console.log("Request Successful")}
+          else if(res.status === "fail"){ console.log('Request Failed')}
+          else return
+        })
+          .catch(err=>console.log(err))
+    console.log(name, email, message)
+    }
+
   }
 
   return (
