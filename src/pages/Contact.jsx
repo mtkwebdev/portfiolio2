@@ -4,7 +4,6 @@ import Video from "../components/SharedComponents/Backgrounds/Video"
 import HomeButton from "../components/SharedComponents/Links/HomeButton"
 // import contactVideo from "../static/videoDrafts/contact.mp4"
 import axios from "axios"
-import '../styles'
 
 const Container = styled.div`
   form{
