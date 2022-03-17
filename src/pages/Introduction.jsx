@@ -91,15 +91,15 @@ const Image = styled.img`
 `
 
 function Introduction() {
-  const [Content] = usePrismicDocumentByUID('introduction','introduction_group')
+  const [Introduction] = usePrismicDocumentByUID('introduction','introduction_group')
 
   return (
     <>
       <Container key="MainContainer">
       <HomeButton/>
       <Image key="ImageBackground" position="absolute" index="-1" width="100vw" height="100vh" objectFit="cover" src={test}/>
-      {Content&&(
-        Content.data.introduction_group.map((data, i)=>{
+      {Introduction&&(
+        Introduction.data.introduction_group.map((data, i)=>{
         return (
           <>
             <Card key={"Card" + i}>

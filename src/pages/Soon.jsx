@@ -28,15 +28,15 @@ margin: 100px auto;
 `
 
 function Soon() {
-    const [Content] = usePrismicDocumentByUID('notfound', 'soon')
+    const [Soon] = usePrismicDocumentByUID('notfound', 'soon')
   return (
       <>
         <HomeButton/>
-        {Content && (
+        {Soon && (
 
         <Container>
-            <img src={Content.data.image.url} alt="" />
-            <h1>{Content.data.text[0].text}</h1>
+            <img src={Soon.data.image.url} alt="" />
+            <h1>{Soon.data.text[0].text}</h1>
         </Container>
         )}
       </>
