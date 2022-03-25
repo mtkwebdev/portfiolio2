@@ -58,7 +58,7 @@ const SearchBar = styled.div`
         border:none;
         outline: none;
         background:none;
-        overflow: scroll;
+        overflow: none;
         @media only screen and (max-width:920px){
             margin: 5px 20px 5px 25px;
             padding: 5px;
@@ -173,7 +173,9 @@ function ResultsPage({children}) {
       <>
         <ResultsSection id='results' className='mainBackground'>
             <TopSection>
+            <a href="/">
                 <Logo src={WebSearchLogo}/>
+            </a>
                 <SearchBar>
                     <i className="searchIcon fa-solid fa-magnifying-glass"></i>
                     <p>Welcome to Mohammad Kawadri's Portfolio Website </p>

@@ -13,6 +13,7 @@ const Container = styled.div`
     background: rgba(255,255,255,0.8);
     min-width: 200px;
     width: 30vw;
+    min-width: 300px;
     padding: 50px 20px;
     font-size: 1.2rem;
     border-radius: 20px;
@@ -24,12 +25,14 @@ const Container = styled.div`
     }
     input{
       margin: 20px auto;
+      min-width: 260px;
       width: 80%;
       height: auto;
       outline:none;
       padding: 12px;
       border-radius: 50px;
       border: 0px none;
+      border: 2px solid rgba(0,0,0, 0);
       font-size: 1.2rem;
       box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px inset;
       transition: ease-in-out 0.2s
@@ -40,15 +43,15 @@ const Container = styled.div`
         transition: ease-in-out 0.2s
       }
       .invalid{
+        border: 2px solid rgba(230,20,0, 1);
         box-shadow:  rgba(230,20,0, 0.5) 0px 0px 1px 5px;
         transition: ease-in-out 0.2s
       }
     textarea{
       margin: 20px auto;
       min-height: 5rem;
-      min-width: 80%;
-      max-width: 80%;
-      width: 50%;
+      min-width: 260px;
+      width: 80%;
       height: auto;
       outline:none;
       padding: 30px 30px;
@@ -59,7 +62,7 @@ const Container = styled.div`
     }
     button{ 
       margin: auto;
-      width: 50%;
+      width: fit-content;
       padding: 15px;
       border-radius: 50px;
       font-size: 1.2rem;
@@ -124,7 +127,6 @@ function Contact() {
           .catch(err=>console.log(err))
     console.log(name, email, message)
     }
-
   }
 
   return (
@@ -141,7 +143,8 @@ function Contact() {
           <label htmlFor="message">Message</label>
           <textarea className="defaultFont" placeholder="Please leave your message here." type="text" name="message" onBlur={()=>collectInfo()} ref={messageRef}></textarea>
 
-          <button type="button" onClick={()=>sendInfo()}>Click to Send Me A Message!</button>
+          {/* <button type="button" onClick={()=>sendInfo()}>Click to Send Me A Message!</button> */}
+          <button type="button" onClick={()=>console.log("button clicked")}>Click to Send Me A Message!</button>
         </form>
       {/* <Video src={contactVideo}/> */}
     </Container>

@@ -5,8 +5,9 @@ import styled from 'styled-components'
 function Hero(props) {
     const Container = styled.div`
     position: relative;
-        width: 100vw;
+        width: 99vw;
         height: auto;
+        margin: auto;
         margin-bottom: 20px;
     `
     

@@ -10,9 +10,9 @@ const IntroSection = styled.div`
     h2{
         position:absolute;
         bottom: 1rem;
-        width:100vw;
-        ${'' /* left: 42.5vw;
-        right: 42.5vw; */}
+        width:50vw;
+        left: 25vw;
+
         font-weight:200;
         animation: bounce 2s infinite;
         text-align:center;
@@ -219,7 +219,7 @@ function HomePage() {
                 </SearchBar>
                 <Buttons>
                     <a href="#results"><button className='buttons'>Search</button></a>
-                    <a href="/#"><button className='buttons'>Contact Me!</button></a>
+                    <a href="/contact"><button className='buttons'>Contact Me!</button></a>
                 </Buttons>
             </MidSection>
             <h2>Scroll Down to see more!</h2>
