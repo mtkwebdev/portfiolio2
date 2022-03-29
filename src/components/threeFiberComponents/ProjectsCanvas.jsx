@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 function ProjectsCanvas({width,height,margin}) {
   const CanvasContainer = styled.div`
-    position: relative; 
+    position: absolute; 
     display: flex;
     width: ${width||"100vw"};
     height: ${height||"100vh"};

@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import styled from "styled-components"
 import Video from "../components/SharedComponents/Backgrounds/Video"
 import HomeButton from "../components/SharedComponents/Links/HomeButton"
-// import contactVideo from "../static/videoDrafts/contact.mp4"
+import contactVideo from "../static/projects.mp4"
 import axios from "axios"
 
 const Container = styled.div`
@@ -10,23 +10,25 @@ const Container = styled.div`
     display:flex;
     flex-direction: column;
     margin: 10vh auto;
-    background: rgba(255,255,255,0.8);
+    ${'' /* background: rgba(255,255,255,0.8); */}
     min-width: 200px;
-    width: 30vw;
+    ${'' /* width: 30vw; */}
     min-width: 300px;
     padding: 50px 20px;
     font-size: 1.2rem;
     border-radius: 20px;
     label{
-      margin: 0px auto 0px auto;
-      color: coal;
+      ${'' /* margin: 0px auto 0px auto; */}
+      margin: 20px 0px;
+      ${'' /* color: coal; */}
+      color: white;
       font-weight: 600;
-      font-size: 1.5rem;
+      font-size: 5rem;
     }
     input{
-      margin: 20px auto;
+      ${'' /* margin: 20px auto; */}
       min-width: 260px;
-      width: 80%;
+      width: 50%;
       height: auto;
       outline:none;
       padding: 12px;
@@ -48,10 +50,10 @@ const Container = styled.div`
         transition: ease-in-out 0.2s
       }
     textarea{
-      margin: 20px auto;
+      ${'' /* margin: 20px auto; */}
       min-height: 5rem;
       min-width: 260px;
-      width: 80%;
+      width: 50%;
       height: auto;
       outline:none;
       padding: 30px 30px;
@@ -61,7 +63,7 @@ const Container = styled.div`
       box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px inset;
     }
     button{ 
-      margin: auto;
+      margin: 20px auto;
       width: fit-content;
       padding: 15px;
       border-radius: 50px;
@@ -125,7 +127,7 @@ function Contact() {
           else return
         })
           .catch(err=>console.log(err))
-    console.log(name, email, message)
+    // console.log(name, email, message)
     }
   }
 
@@ -143,10 +145,11 @@ function Contact() {
           <label htmlFor="message">Message</label>
           <textarea className="defaultFont" placeholder="Please leave your message here." type="text" name="message" onBlur={()=>collectInfo()} ref={messageRef}></textarea>
 
-          {/* <button type="button" onClick={()=>sendInfo()}>Click to Send Me A Message!</button> */}
-          <button type="button" onClick={()=>console.log("button clicked")}>Click to Send Me A Message!</button>
+          <button type="button" onClick={()=>sendInfo()}>Click to Send Me A Message!</button>
+          {/* <button type="button" onClick={()=>console.log("button clicked")}>Click to Send Me A Message!</button> */}
         </form>
-      {/* <Video src={contactVideo}/> */}
+      {/* <Video src={'https://link.eu1.storjshare.io/s/jxkzw3g7livpyvyeni4v4m6pafwq/porfoliobucket/projects.mp4?wrap=0'}/> */}
+      <Video src={contactVideo}/>
     </Container>
   )
 }

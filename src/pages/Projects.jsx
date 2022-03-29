@@ -4,6 +4,7 @@ import styled from 'styled-components'
 // import blueWeb from '../static/videoDrafts/projects.mp4'
 import HomeButton from '../components/SharedComponents/Links/HomeButton'
 import {PrismicRichText ,usePrismicDocumentByUID} from '@prismicio/react'
+import ProjectsCanvas from '../components/threeFiberComponents/ProjectsCanvas'
 
 // import Video from '../components/SharedComponents/Backgrounds/Video'
     // url={"https://link.eu1.storjshare.io/s/jwxl5q6y5dul7zj4m6np5q3p3p6q/testbucket/introduction.mp4?wrap=0"}
@@ -95,7 +96,7 @@ function Projects() {
   return (
     <Container>
     <HomeButton/>
-
+    <ProjectsCanvas width="100vw" height="100vh"/>
       {Content && Content.data.repeatable_project.map((items, i)=>{
         return (
       <Sections>
