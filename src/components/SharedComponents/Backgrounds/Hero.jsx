@@ -5,10 +5,10 @@ import styled from 'styled-components'
 function Hero(props) {
     const Container = styled.div`
     position: relative;
-        width: 99vw;
+        width: 100%;
         height: auto;
         margin: auto;
-        margin-bottom: 20px;
+        ${'' /* margin-bottom: 20px; */}
     `
     
     const Image = styled.div`
@@ -17,7 +17,7 @@ function Hero(props) {
         position: relative; /* Needed to position the cutout text in the middle of the image */
     `
     const Text = styled.div`
-        background-color: rgba(255,255,255,0.6);
+        background-color: rgba(255,255,255,1);
         color: black;
         mix-blend-mode: screen; /* This makes the cutout text possible */
         font-size: 10vw;
